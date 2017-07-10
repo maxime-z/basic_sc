@@ -46,3 +46,5 @@ print(factor(det_jac))
 #Plot
 plot3d_parametric_surface(xy[0], xy[1], det_jac,(xi,-1,1),(eta,-1,1))
 det_jac.subs([(xi,1),(eta,-1)])
+
+
