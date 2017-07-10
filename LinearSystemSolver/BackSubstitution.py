@@ -46,12 +46,12 @@ class TestBackSubstitution(unittest.TestCase):
         U = numpy.array([[3, 5, -1],[0,2,-7],[0,0,-4]])
         b = numpy.array([2,-16,-8])
         x = backSubstitutions(U, b)
-        self.assertEqual(x.all(),(numpy.array([3,-1,2])).all())
+        # self.assertEqual(x.all(),(numpy.array([3,-1,2])).all())
+        self.assertTrue(numpy.allclose(x, numpy.array([3, -1, 2])))
 
     def testBackSubstituationsSAXPY(self):
         U = numpy.array([[3, 5, -1], [0, 2, -7], [0, 0, -4]])
         b = numpy.array([2, -16, -8])
         x = backSubstitutionsSAXPY(U, b)
-        self.assertEqual(x.all(), (numpy.array([3, -1, 20])).all())
-
-
+        # self.assertEqual(x.all(), (numpy.array([3, -1, 20])).all())
+        self.assertTrue(numpy.allclose(x, numpy.array([3, -1, 2])))
