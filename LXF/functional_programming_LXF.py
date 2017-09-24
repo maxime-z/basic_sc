@@ -43,3 +43,35 @@ def normalize(name):
 names = ['adam', 'LISA', 'barT']
 
 print(list(normalize(names)))
+
+
+def prod(L):
+    return reduce(lambda x,y:x*y, L)
+
+print('3 * 5 * 7 * 9 =', prod([3, 5, 7, 9]))
+
+
+# string to float
+
+
+def char2numWithPoint(c):
+    nums = '0123456789.'
+    dic = {}
+    for i,char in enumerate(nums):
+        dic[char] = i
+    return dic[c]
+
+
+def fnF(x,y):
+
+    return 10*x + y
+
+
+def str2float(s):
+    l = map(char2numWithPoint,s)
+    print(list(l))
+
+
+    return 0
+
+print('str2float(\'123.456\') =', str2float('123.456'))

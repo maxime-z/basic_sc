@@ -55,6 +55,5 @@ class TestElimination(unittest.TestCase):
         print(numpy.dot(A,sol))
         x = elimination(A,b)
 
-
-        self.assertEqual(x.all(),sol.all())
-
+        # self.assertEqual(x.all(),sol.all())
+        self.assertTrue(numpy.allclose(x, sol))

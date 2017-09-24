@@ -2,7 +2,7 @@
 
 class Fib(object):
     def __init__(self):
-        self.a, self.b = 0, 1
+        self.a, self.b = 1, 1
 
     def __iter__(self):
         return self
@@ -35,16 +35,17 @@ class Fib(object):
                 a, b = b, a + b
             return L
 
+if __name__ == '__main__':
 
 
-print(Fib())
+    print(Fib())
 
-#for n in Fib():
-#    print(n)
+    #for n in Fib():
+    #    print(n)
 
-print(Fib()[0])
+    print(Fib()[1])
 
-print(Fib()[0:5])
+    print(Fib()[0:5])
 
 
 #REST API - URL
@@ -99,14 +100,15 @@ class ParamChain2(object):
 
     __repr__ = __str__
 
+if __name__ == '__main__':
 
 
-paramChain = ParamChain()
-print(type(paramChain))
+    paramChain = ParamChain()
+    print(type(paramChain))
 
-print(paramChain.status.user.timeline.list)
-print(paramChain.users('leizh').repos.projet)
+    print(paramChain.status.user.timeline.list)
+    print(paramChain.users('leizh').repos.projet)
 
-print(ParamChain2().users('michael').group('student').repos)
+    print(ParamChain2().users('michael').group('student').repos)
 
 
