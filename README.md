@@ -1,3 +1,3 @@
-# Learn-python
+# Basic Scientific Computing
 
-python practicing programs
+This project includes some python implementations of basic scientifc computing algorithms.
