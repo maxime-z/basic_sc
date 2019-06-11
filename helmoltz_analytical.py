@@ -29,7 +29,19 @@ def source_function(field, khi, beta):
 
 
 if __name__ == '__main__':
-    e_field = e_field(1, 1)
+    field = e_field(1, 1)
 
     # TODO: How to transform the symbolic expression into function.
-    print(source_function(e_field, 1, 1))
+    source = source_function(field, 1, 1)
+
+    source_x = source & e_x
+    print(source_x)
+    source_y = source & e_y
+    print(source_y)
+    source_z = source & e_z
+    print(source_x)
+
+    # Dirichlet Boundary condtion
+    r = x**2+y**2
+    n = 1
+    print(e_field(r, n))

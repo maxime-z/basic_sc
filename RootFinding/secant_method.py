@@ -4,7 +4,7 @@ import numpy as np
 
 def f(x):
     """Function whose root to found"""
-    return x ** 2 - 10
+    return 10 - x ** 2
 
 
 class SecantMethod:
@@ -30,6 +30,7 @@ class SecantMethod:
             self.b = a
 
     def solve(self, converge_criterion):
+        # TODO: error estimation.
         ai = self.a
         while not np.isclose(self.func(ai), 0, atol=converge_criterion):
             da = -self.func(ai) * (self.b - ai) / (self.func(self.b) - self.func(ai))

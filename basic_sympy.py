@@ -20,4 +20,7 @@ print(Rational(1, 3))
 # trigonometric expansion
 expr2 = sin(2 * x) + cos(2 * x)
 print(expand_trig(expr2))
-print()
+
+# Physics Vectors and Reference Frame
+from sympy.physics.vector import *
+N = ReferenceFrame('N')
