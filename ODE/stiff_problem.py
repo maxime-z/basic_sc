@@ -9,7 +9,6 @@ from sympy.solvers.ode import dsolve
 
 ### First let's try to define the equation and solve it analytical using Sympy
 
-
 def analytical_solution():
     """Resolve exact solution using Sympy"""
     t, a = symbols('t a')
@@ -38,11 +37,11 @@ def explicit_euler_solution(dx, x0, dt, n_step):
 
 def implicit_euler_solution(a, x0, dt, n_step):
     """Numerical solution found through Euler implicit method"""
-    t = np.arange(0, n_step)*dt
+    t = np.arange(0, n_step) * dt
     x_num = np.zeros(n_step)
     x_num[0] = x0
     for i in range(1, n_step):
-        x_num[i] = 1/(1+a*dt)*x_num[i-1]
+        x_num[i] = 1 / (1 + a * dt) * x_num[i - 1]
 
     return t, x_num
 
@@ -53,8 +52,8 @@ if __name__ == '__main__':
     dx = lambda x: -a * x
     a = 10
 
-    dt = 0.15
-    n_step = 20
+    dt = 0.12
+    n_step = 50
     t, x_explicit = explicit_euler_solution(dx, x0, dt, n_step)
     t, x_implicit = implicit_euler_solution(a, x0, dt, n_step)
     x_exact = np.exp(-a * t)
