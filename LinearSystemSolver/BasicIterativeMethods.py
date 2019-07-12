@@ -3,7 +3,11 @@
 - Jacobi Iteration
 - Gauss-Seidal Iteration
 - SOR - Successive Over Relaxation
+
+All these 3 can be expressed in : Generalized Linear Fixed Point Iteration for Systems.
 """
+
+# TODO: Make a function to do convergence and error analysis for this kind of iterative solver.
 
 import matplotlib.pyplot as plt
 import numpy as np
