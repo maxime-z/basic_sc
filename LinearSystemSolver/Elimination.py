@@ -1,7 +1,8 @@
 import numpy
 import unittest
 
-from BackSubstitution import *
+from LinearSystemSolver.BackSubstitution import *
+
 
 # ELIMINATION is a solver for linear system with Gaussian elimination method
 # x = Elimination(A,b) solves the linear system Ax = b using Gaussian elimination
@@ -22,38 +23,38 @@ def elimination(A, b):
     tol = 1e-14
     parameterCheck(A, b)
     n = b.size
-    normaA = numpy.linalg.norm(A,ord=1)
-    A = numpy.hstack((A,b.reshape(n,1)))
-    for i in range(0,n):
-        absAi = numpy.absolute(A[i:,i])
+    normaA = numpy.linalg.norm(A, ord=1)
+    A = numpy.hstack((A, b.reshape(n, 1)))
+    for i in range(0, n):
+        absAi = numpy.absolute(A[i:, i])
         maximum = numpy.amax(absAi)
-        kmax = numpy.argmax(absAi)+i
-        if maximum < tol*normaA:
+        kmax = numpy.argmax(absAi) + i
+        if maximum < tol * normaA:
             raise ValueError('A is singular')
         if i != kmax:
-            h = A[kmax,:].copy()
-            A[kmax,:] = A[i,:]
+            h = A[kmax, :].copy()
+            A[kmax, :] = A[i, :]
             A[i, :] = h
-        A[i+1:,i]= A[i+1:,i]/A[i,i]
-        subDim = n-i-1
-        subMatrix = numpy.matmul(A[i+1:,i].copy().reshape(subDim,1),
-                                         A[i,i+1:n+1].copy().reshape(1,subDim+1))
-        A[i+1:,i+1:n+1] = A[i+1:,i+1:n+1] - subMatrix
+        A[i + 1:, i] = A[i + 1:, i] / A[i, i]
+        subDim = n - i - 1
+        subMatrix = numpy.matmul(A[i + 1:, i].copy().reshape(subDim, 1),
+                                 A[i, i + 1:n + 1].copy().reshape(1, subDim + 1))
+        A[i + 1:, i + 1:n + 1] = A[i + 1:, i + 1:n + 1] - subMatrix
 
-    x = backSubstitutionsSAXPY(A[:,:n],A[:,n])
+    x = backSubstitutionsSAXPY(A[:, :n], A[:, n])
     return x
 
 
 class TestElimination(unittest.TestCase):
     def testElimnation(self):
-        A = numpy.array([[16,-120,240,-140],
-                        [-120,1200,-2700,1680],
-                        [240,-2700,6480,-4200],
-                        [-140,1680,-4200,2800]]).astype('float')
-        b = numpy.array([-4,60,-180,140]).astype('float')
+        A = numpy.array([[16, -120, 240, -140],
+                         [-120, 1200, -2700, 1680],
+                         [240, -2700, 6480, -4200],
+                         [-140, 1680, -4200, 2800]]).astype('float')
+        b = numpy.array([-4, 60, -180, 140]).astype('float')
         sol = numpy.ones(4)
-        print(numpy.dot(A,sol))
-        x = elimination(A,b)
+        print(numpy.dot(A, sol))
+        x = elimination(A, b)
 
         # self.assertEqual(x.all(),sol.all())
         self.assertTrue(numpy.allclose(x, sol))

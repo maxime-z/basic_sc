@@ -13,7 +13,12 @@ geometry = [mp.Block(mp.Vector3(mp.inf, 1, mp.inf),
                      center=mp.Vector3(),
                      material=mp.Medium(epsilon=12))]
 
-sources = [mp.Source(src=mp.ContinuousSource(frequency=0.15),
+i=2
+wavelength = 4*np.sqrt(12)/i
+
+print('wavelength/h: %f' %(wavelength/np.sqrt(12)))
+
+sources = [mp.Source(src=mp.ContinuousSource(wavelength=wavelength),
                      component=mp.Ez,
                      center=mp.Vector3(-7, 0))]
 
@@ -29,7 +34,7 @@ sim = mp.Simulation(cell_size=cell,
                     sources=sources,
                     resolution=resolution)
 
-sim.run(until=200)
+sim.run(until=100)
 
 """Post-processing"""
 # plot the epsilon and mu values
@@ -44,7 +49,9 @@ axs[0, 1].imshow(mu_data.transpose(), cmap='binary')
 # plot the z-component of electric field in the domain
 ez_data = sim.get_array(center=mp.Vector3(), size=cell, component=mp.Ez)
 hy_data = sim.get_array(center=mp.Vector3(), size=cell, component=mp.Hy)
-axs[1, 0].imshow(ez_data.transpose(), cmap='RdBu')
-axs[1, 1].imshow(hy_data.transpose(), cmap='RdBu')
+axs[1, 0].imshow(eps_data.transpose(), cmap='binary')
+axs[1, 0].imshow(ez_data.transpose(), cmap='RdBu', alpha=0.8)
+axs[1, 1].imshow(eps_data.transpose(), cmap='binary')
+axs[1, 1].imshow(hy_data.transpose(), cmap='RdBu', alpha=0.8)
 
 plt.show()

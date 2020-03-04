@@ -32,7 +32,6 @@ sim.run(mp.at_beginning(mp.output_epsilon),
         mp.to_appended("ez", mp.at_every(0.6, mp.output_efield_z)),
         until=200)
 
-
 """Post-processing"""
 # plot the epsilon and mu values
 eps_data = sim.get_array(center=mp.Vector3(), size=cell, component=mp.Dielectric)
