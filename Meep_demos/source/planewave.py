@@ -9,7 +9,7 @@ cell_size = mp.Vector3(14, 10, 0)
 pml_layers = [mp.PML(thickness=2, direction=mp.X)]
 
 # rotation angle (in degrees) of planewave, counter clockwise (CCW) around z-axis
-rot_angle = np.radians(30)
+rot_angle = np.radians(45)
 
 fsrc = 1.0  # frequency of planewave (wavelength = 1/fsrc)
 
