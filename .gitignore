@@ -2,3 +2,5 @@
 *.h5
 *.png
 Intersim_salary.py
+__pycache__/
+*.npy

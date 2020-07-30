@@ -16,6 +16,7 @@ susceptibilities = [mp.LorentzianSusceptibility(frequency=1.1, gamma=1e-5, sigma
                     mp.LorentzianSusceptibility(frequency=0.5, gamma=0.1, sigma=2e-5)]
 
 default_material = mp.Medium(epsilon=2.25, E_susceptibilities=susceptibilities)
+# default_material = mp.Medium(epsilon=2.25)
 
 """
 In fact, there is a range of frequencies from 1.1 to 1.2161 where ε is negative. 
@@ -30,7 +31,7 @@ sources = [mp.Source(mp.GaussianSource(fcen, fwidth=df), component=mp.Ez, center
 
 kmin = 0.3
 kmax = 2.2
-k_interp = 99
+k_interp = 10
 kpts = mp.interpolate(k_interp, [mp.Vector3(kmin), mp.Vector3(kmax)])
 sim = mp.Simulation(cell_size=cell,
                     geometry=[],
